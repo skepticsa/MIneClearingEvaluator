@@ -51,8 +51,8 @@ We created some simple unit tests using jUnit.
 
 #TODO
 
-[] Example 3 calculates the score as 1 when the documentation says it needs to be 1!?
-[] Write more tests including integration tests
-[] Come up with more scenarios to test normal use cases as well as edge cases and negative ones.
-[] The field does not "shrink" when the ship moves North or West so some of the steps do not fully match the documentation, they are larger.
-[] The code that runs the scenarios, the `Evaluator` and `Field` classes, are too coupled to printing the output. Some refactoring may allow us to run and tests complex scenario without having to intercept the console. Decoupling may allow us to read the input from other places than files as well as sending the output of every step to a graphical interface (a different UI).
+[ ] Example 3 calculates the score as 1 when the documentation says it needs to be 1!?
+[ ] Write more tests including integration tests
+[ ] Come up with more scenarios to test normal use cases as well as edge cases and negative ones.
+[ ] The field does not "shrink" when the ship moves North or West so some of the steps do not fully match the documentation, they are larger.
+[ ] The code that runs the scenarios, the `Evaluator` and `Field` classes, are too coupled to printing the output. Some refactoring may allow us to run and tests complex scenario without having to intercept the console. Decoupling may allow us to read the input from other places than files as well as sending the output of every step to a graphical interface (a different UI).
