@@ -1,5 +1,20 @@
 package MineClearing;
 
+/**
+ * 
+ * @author Danut Prisacaru
+ *
+ *        Mine.java - the class implements the information about one Mine: 
+ *        x and y are the coordinates while dist is the distance on the z coordinate. 
+ *        The constructor converts the character that represents the distance 
+ *        to an integer which the distance in kilometers. 
+ *        The dist2char() method does the reverse operation, 
+ *        it takes the distance as an integer and converts it to a proper character. 
+ *        If the distance is invalid then the character returned is '*' (asterisk).
+ *        The toString() method is creating a string with the internal representation 
+ *        of the mine so we can use it for debugging purposes.
+ *
+ */
 public class Mine {
   private int x; 
   private int y;

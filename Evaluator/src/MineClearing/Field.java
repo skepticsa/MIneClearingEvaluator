@@ -5,14 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Field {
-  private ArrayList<Mine> mines;
+  private final ArrayList<Mine> mines = new ArrayList<Mine>();
   private int size_x;
   private int size_y;
 
   private int min_x = Integer.MAX_VALUE;
   private int min_y = Integer.MAX_VALUE;
   
-  private int initial_nof_mines;
+  // We need these 3 fields to calculate the score
+  private int initial_nof_mines; 
   private int shots_fired;
   private int moves;
   
@@ -24,9 +25,8 @@ public class Field {
    * @param field_lines represent the field configuration as read from a file.
    */
   public Field(List<String> field_lines) {
-    this.mines = new ArrayList<Mine>();
-    
     size_y = field_lines.size();
+    
     int y = 0;
     for (String temp: field_lines) {
       size_x = Math.max(size_x, temp.length());
@@ -114,13 +114,8 @@ public class Field {
     
     if (min_y == 0) {
       size_y += 2;
-      for (Mine mine : mines) {
-        if (drop) {
-          mine.goUp();
-          if (mine.getDist() <= 0) {
-            failed = true;
-          }
-        }
+      if (drop) {
+        shipGoDown();
       }
     } else {
       for (Mine mine : mines) {
@@ -178,8 +173,8 @@ public class Field {
     
     if (min_x == 0) {
       size_x += 2;
-      for (Mine mine : mines) {
-        mine.goUp();
+      if (drop) {
+        shipGoDown();
       }
     } else {
       for (Mine mine : mines) {
@@ -196,7 +191,7 @@ public class Field {
   }
   
   /**
-   * IShip going down means that actually the mines go up.
+   * Ship going down means that actually the mines go up.
    * 
    */
   public void shipGoDown() {
@@ -310,6 +305,12 @@ public class Field {
     }
   }
   
+  /**
+   * Goes over all the mines in the list and checks if their coordinates matches
+   * any of the torpedoes, if they do then it removes the mine from the list.
+   * 
+   * @param pattern - the coordinates of the torpedoes
+   */
   private void destroyMines(Point[] pattern) {
     if (failedAlready()) {
       return;
